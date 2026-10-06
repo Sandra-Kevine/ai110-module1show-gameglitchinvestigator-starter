@@ -25,30 +25,15 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+- [x] Describe the game's purpose: A simple number-guessing game built with Streamlit where the player tries to guess a secret number between 1 and 100, with hints after each guess.
+- [x] Detail which bugs you found: (1) The "Too High"/"Too Low" hint text was swapped with the wrong direction, (2) the secret number was converted to a string on every other guess, breaking comparisons, (3) after winning, clicking "New Game" didn't reset the win status, so the game stayed stuck saying "You already won."
+- [x] Explain what fixes you applied: Swapped the hint text so it matches the actual status, removed the string-conversion logic so `secret` always stays a number, and added a line resetting `status` to `"playing"` inside the New Game logic.
 
-## 📸 Demo Walkthrough
+## 🎮 Demo Walkthrough
 
-Describe your fixed game in numbered steps so a reader can follow along without watching a video:
-
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
-
-**Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
-
-## 🧪 Test Results
-
-```
-# Paste your pytest output here, e.g.:
-# pytest tests/
-# ========================= X passed in 0.XXs =========================
-```
-
-## 🚀 Stretch Features
-
-- [ ] [If you choose to complete Challenge 4, describe the Enhanced UI changes here — a screenshot is optional]
+1. Run the app with `python3 -m streamlit run app.py` and open it in the browser.
+2. Open "Developer Debug Info" to see the secret number.
+3. Guess a number higher than the secret — the hint correctly says "Go LOWER!"
+4. Guess a number lower than the secret — the hint correctly says "Go HIGHER!"
+5. Guess the exact secret number — the game shows "Congratulations" and the win message.
+6. Click "New Game" — the game resets fully and is immediately playable again, with no leftover "You already won" message.
